@@ -1,25 +1,26 @@
-const fs = require("fs").promises;
-const path = require("path");
+import fs from "fs/promises";
+import process from "process";
+import path from "path";
 
-const contactsPath = path.join(__dirname, "db", "contacts.json");
+const contactsPath = path.join(process.cwd(), "/db/contacts.json");
 
-function listContacts() {
+export function listContacts() {
   fs.readFile(contactsPath)
     .then((data) => console.table(JSON.parse(data)))
     .catch((error) => console.log(error.message));
 }
 
-function getContactById(contactId) {
+export function getContactById(contactId) {
   fs.readFile(contactsPath)
     .then((data) => {
       const parsedData = JSON.parse(data);
-      const contact = parsedData.find((contact) => contact.id == contactId);
+      const contact = parsedData.find((contact) => contact.id === contactId);
       console.log(contact);
     })
     .catch((error) => console.log(error.message));
 }
 
-function removeContact(contactId) {
+export function removeContact(contactId) {
   fs.readFile(contactsPath)
     .then((data) => {
       const parsedData = JSON.parse(data);
@@ -27,7 +28,7 @@ function removeContact(contactId) {
         (contact) => contact.id !== contactId
       );
 
-      if (parsedData.length == updatedContacts.length) {
+      if (parsedData.length === updatedContacts.length) {
         return console.log(
           `None of your contact's id matches with: ${contactId}. Consider adding it to your list.`
         );
@@ -40,7 +41,7 @@ function removeContact(contactId) {
     .catch((error) => console.log(error.message));
 }
 
-function addContact(name, email, phone) {
+export function addContact(name, email, phone) {
   fs.readFile(contactsPath)
     .then((data) => {
       const parsedData = JSON.parse(data);
@@ -50,7 +51,7 @@ function addContact(name, email, phone) {
         phone: phone,
       };
 
-      if (parsedData.find((element) => element.phone == contact.phone)) {
+      if (parsedData.find((element) => element.phone === contact.phone)) {
         return console.log(
           `Contact you're trying to add is already on your list!`
         );
@@ -61,10 +62,3 @@ function addContact(name, email, phone) {
     })
     .catch((error) => console.log(error.message));
 }
-
-module.exports = {
-  listContacts,
-  getContactById,
-  removeContact,
-  addContact,
-};

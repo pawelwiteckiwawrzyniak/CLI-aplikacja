@@ -1,5 +1,33 @@
-list: https://ibb.co/NWzJGbP 
-getById: https://ibb.co/51VPX1B 
-addContact: https://ibb.co/yB9vpYC 
-removeContact: https://ibb.co/jvYyzHm 
-finalList: https://ibb.co/gjKVsDV 
+# console app
+
+## how to install
+
+```shell
+npm install
+```
+
+## how to use
+
+### list
+
+![List](https://i.imgur.com/OsT6tpB.png)
+
+```shell
+npm run start -- -a list
+```
+
+---
+
+### get
+
+![Get by ID](https://i.imgur.com/qYA2WEi.png)
+
+```shell
+npm run -- -a get -id
+```
+
+---
+
+### add/remove
+
+![Add, remove](https://i.imgur.com/sCm2c3w.png)

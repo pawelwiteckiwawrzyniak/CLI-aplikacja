@@ -1,4 +1,11 @@
-const { Command } = require("commander");
+import { Command } from "commander";
+import {
+  listContacts,
+  getContactById,
+  removeContact,
+  addContact,
+} from "./contacts.js";
+
 const program = new Command();
 program
   .option("-a, --action <type>", "choose action")
@@ -8,15 +15,7 @@ program
   .option("-p, --phone <type>", "user phone");
 
 program.parse(process.argv);
-
 const argv = program.opts();
-
-const {
-  listContacts,
-  getContactById,
-  removeContact,
-  addContact,
-} = require("./contacts");
 
 function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
