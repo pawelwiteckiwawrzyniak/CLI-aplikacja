@@ -33,8 +33,10 @@ npm run -- -a get --id
 ![Add, remove](https://i.imgur.com/sCm2c3w.png)
 
 ```shell
-npm run -- -a remove --id
 npm run -- -a add --name --email --phone --id
+```
+```shell
+npm run -- -a remove --id
 ```
 
 ---
